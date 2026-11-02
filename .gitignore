@@ -1,0 +1,32 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pytest y cobertura
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Bases de datos SQLite
+*.db
+*.sqlite
+
+# SonarQube
+.scannerwork/
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Logs
+*.log
