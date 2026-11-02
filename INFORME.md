@@ -80,15 +80,15 @@ La idempotencia se garantiza estructuralmente mediante `INSERT OR REPLACE` sobre
 
 ---
 
-> **[ESPACIO RESERVADO PARA CAPTURA DE PANTALLA 1]**  
-> *Instrucción:* Adjuntar captura de la terminal ejecutando `python -m pytest tests/ -v` con las 36 pruebas en verde (PASSED).  
-> *Comando:* `python -m pytest tests/ -v`
+#### Evidencia 1: Ejecución de la Suite de Pruebas con pytest
+![Ejecución de pruebas unitarias e integración con pytest](img/Captura%20de%20pantalla%201.png)
+*Figura 1: 36 pruebas unitarias y de integración superadas exitosamente (100% PASSED).*
 
 ---
 
-> **[ESPACIO RESERVADO PARA CAPTURA DE PANTALLA 2]**  
-> *Instrucción:* Adjuntar captura de la terminal ejecutando el reporte de cobertura mostrando **100%** en todos los módulos ETL.  
-> *Comando:* `python -m pytest tests/ --cov=etl --cov-report term-missing`
+#### Evidencia 2: Reporte de Cobertura de Código
+![Reporte de cobertura con pytest-cov](img/Captura%20de%20pantalla%202.png)
+*Figura 2: Cobertura de código del 100% alcanzada en todo el paquete etl/.*
 
 ---
 
@@ -119,15 +119,25 @@ Reemplazado por `except (KeyError, TypeError) as exc:` con re-raise mediante `ra
 
 ---
 
-> **[ESPACIO RESERVADO PARA CAPTURA DE PANTALLA 3]**  
-> *Instrucción:* Adjuntar captura del Dashboard de SonarQube (http://localhost:9000) **ANTES** de corregir `reportes.py`, mostrando los Issues de seguridad y el Quality Gate en estado **FAILED**.  
-> *Pasos:* Levantar SonarQube con Docker → ejecutar scanner con la versión vulnerable → capturar dashboard.
+#### Evidencia 3: Análisis SAST en SonarQube - Estado Vulnerable (ANTES)
+
+A continuación se presentan las vistas detalladas del Dashboard de SonarQube con la versión vulnerable de `etl/reportes.py`:
+
+![SonarQube Dashboard - Estado Inicial con Vulnerabilidades](img/Captura%20de%20pantalla%203.0.png)
+*Figura 3.1: Vista general del proyecto en SonarQube mostrando el Quality Gate y métricas iniciales.*
+
+![SonarQube Detalle de Problemas y Reglas](img/Captura%20de%20pantalla%203.1.png)
+*Figura 3.2: Desglose de issues identificados, severidad y clasificación de vulnerabilidades.*
+
+![SonarQube Inspección en Código Fuente](img/Captura%20de%20pantalla%203.2.png)
+*Figura 3.3: Detección estática en el código de etl/reportes.py (SQL Injection, hardcoded password y eval).*
 
 ---
 
-> **[ESPACIO RESERVADO PARA CAPTURA DE PANTALLA 4]**  
-> *Instrucción:* Adjuntar captura del Dashboard de SonarQube **DESPUÉS** de aplicar las correcciones, mostrando el Quality Gate en estado **PASSED** y 0 vulnerabilidades críticas.  
-> *Pasos:* Actualizar `reportes.py` con la versión corregida → re-ejecutar scanner → capturar dashboard.
+#### Evidencia 4: Análisis SAST en SonarQube - Estado Corregido (DESPUÉS)
+
+![SonarQube Dashboard - Quality Gate PASSED](img/Captura%20de%20pantalla%204.png)
+*Figura 4: Dashboard de SonarQube tras la refactorización integral, mostrando Quality Gate APROBADO (PASSED), 0 vulnerabilidades y cobertura de pruebas.*
 
 ---
 
